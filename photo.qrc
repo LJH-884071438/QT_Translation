@@ -1,0 +1,11 @@
+﻿<RCC>
+    <qresource prefix="/">
+        <file>photo/2.png</file>
+        <file>photo/baidu.png</file>
+        <file>photo/baidu1.png</file>
+        <file>photo/baidu2.png</file>
+        <file>photo/p.png</file>
+        <file>photo/p2.ico</file>
+        <file>photo/Tree.png</file>
+    </qresource>
+</RCC>
