@@ -1,0 +1,2 @@
+# QT_Translation
+基于QT调用百度api的在线翻译程序demo
