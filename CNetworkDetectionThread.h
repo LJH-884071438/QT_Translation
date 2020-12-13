@@ -27,7 +27,7 @@ signals:
     void sNetworkStatus(int nRow,QString sStatus);//通知网络状态 0
 private:
      bool IsWebOk();
-     QTcpSocket tcpClient;
+     QTcpSocket *tcpClient;
      QString liveIP;
      int livePort;
      bool m_State;

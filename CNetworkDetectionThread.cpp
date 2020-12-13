@@ -5,17 +5,19 @@ CNetworkDetectionThread::CNetworkDetectionThread()
     liveIP = "14.215.177.39";//设置ip
     livePort = 80;//设置端口
     m_State = true;
+    tcpClient = NULL;
 }
 
 CNetworkDetectionThread::~CNetworkDetectionThread()
 {
-    setThreadRun();//设置标志位线程停止
+    setThreadRun(false);//设置标志位线程停止
     wait();//等待线程停止
     quit();//退出线程
 }
 
 void CNetworkDetectionThread::run()
 {
+    tcpClient = new QTcpSocket(this);
     for(;;)
     {
         if(!m_State)//线程退出标志位；
@@ -31,7 +33,7 @@ void CNetworkDetectionThread::run()
         }
          sleep(10);//10秒刷新一次
     }
-     tcpClient.close();//关闭tcplian连接
+     tcpClient->close();//关闭tcplian连接
 }
 
 void CNetworkDetectionThread::setThreadRun(bool bState)
@@ -41,8 +43,8 @@ void CNetworkDetectionThread::setThreadRun(bool bState)
 
 bool CNetworkDetectionThread::IsWebOk()
 {
-    tcpClient.abort();
-    tcpClient.connectToHost(liveIP, livePort);
+    tcpClient->abort();
+    tcpClient->connectToHost(liveIP, livePort);
     //100毫秒没有连接上则判断不在线
-    return tcpClient.waitForConnected();
+    return tcpClient->waitForConnected();
 }
